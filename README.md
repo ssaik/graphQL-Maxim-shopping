@@ -11,3 +11,7 @@ npm install --save-dev nodemon
 
 Run app:==> node app.js
 
+update the package.json --> ``"start": "nodemon app.js"``
+
+
+
