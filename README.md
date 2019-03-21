@@ -30,3 +30,26 @@ Mutations::
 `mutation {`
 `  createEvent(nameX: "sport")`
 `}`
+
+#--------------------------
+3TypesAndData
+
+`mutation {`
+`  createEvent (eventInput: {title: "title1", description: "desc1", price: 9.97, date: "2019-03-21T04:09:08.707Z"}) {`
+`    title`
+`    description`
+`  }`
+`}`
+
+
+`query {`
+`  events {`
+`    title`
+`    price`
+`  }`
+`}`
+
+#------------------
+4MangoDB
+
+npm install --save mongoose
