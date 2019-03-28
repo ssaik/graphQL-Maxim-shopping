@@ -31,7 +31,7 @@ Mutations::
 `  createEvent(nameX: "sport")`
 `}`
 
-#--------------------------
+# --------------------------
 3TypesAndData
 
 `mutation {`
@@ -49,7 +49,32 @@ Mutations::
 `  }`
 `}`
 
-#------------------
+# ------------------
 4MangoDB
 
 npm install --save mongoose
+
+Mutation:
+mutation {
+  createEvent(eventInput: {title: "A tes2t", description: "dec", price: 9.99, date: "2019-03-26T03:38:21.774Z"}) {
+    title
+    _id
+  }
+}
+
+
+Query:
+query {
+  events {
+    _id
+    title
+  }
+}
+
+Install bcryptjs --> it is used to encrypt the password, to create a HASH.
+`npm install --save bcryptjs`
+
+
+Also added the relation...
+
+
