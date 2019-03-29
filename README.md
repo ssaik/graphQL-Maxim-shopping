@@ -81,7 +81,7 @@ Also added the relation...
 # ----------------------------------------------------
 # ----------------------------------------------------
 
-cd frontend
-npx create-react-app .
-npm install --save react-router-dom
+`cd frontend`
+`npx create-react-app .`
+`npm install --save react-router-dom`
 
