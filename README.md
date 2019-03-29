@@ -78,3 +78,10 @@ Install bcryptjs --> it is used to encrypt the password, to create a HASH.
 Also added the relation...
 
 
+# ----------------------------------------------------
+# ----------------------------------------------------
+
+cd frontend
+npx create-react-app .
+npm install --save react-router-dom
+
