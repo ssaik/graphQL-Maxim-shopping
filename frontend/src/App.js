@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import AuthPage from './pages/Auth'
+import Bookings from './pages/Bookings'
+import Events from './pages/Event'
 import './App.css';
 
 class App extends Component {
@@ -11,8 +13,8 @@ class App extends Component {
         <Switch>
           <Redirect from="/" to="/auth" exact/>
           <Route path="/auth" component={AuthPage} />
-          <Route path="/events" component={null} />
-          <Route path="/bookings" component={null} />
+          <Route path="/events" component={Events} />
+          <Route path="/bookings" component={Bookings} />
         </Switch>
       </BrowserRouter>
     );
