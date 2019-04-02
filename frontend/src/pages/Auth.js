@@ -3,10 +3,20 @@ import './Auth.css'
 
 class Authpage extends Component {
 
+    state = {
+        isLogin: true
+    }
+
     constructor(props) {
         super(props);
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
+    }
+
+    switchModeHandler = () => {
+        this.setState(prevState => {
+            return {isLogin: !prevState.isLogin};
+        })
     }
 
     submitHandler = (event) => {
@@ -17,17 +27,30 @@ class Authpage extends Component {
         if(email.trim().length === 0 || password.trim().length === 0 ) {
             return;
         }
-
-        const requestBody = {
+        let requestBody = {
             query: `
-                mutation {
-                    createUser(userInput: {email: "${email}", password: "${password}"}) {
-                        _id
-                        email
+                query {
+                    login(email: "${email}", password: "${password}") {
+                        userId
+                        token
+                        tokenExpiration
                     }
                 }
             `
         };
+
+        if(!this.state.isLogin){
+             requestBody = {
+                query: `
+                    mutation {
+                        createUser(userInput: {email: "${email}", password: "${password}"}) {
+                            _id
+                            email
+                        }
+                    }
+                `
+            };
+        }
 
         fetch('http://localhost:4000/graphql', {
             method: 'POST',
@@ -37,6 +60,7 @@ class Authpage extends Component {
             }
         }).then(res => {
             if(res.status !== 200 && res.status !== 201) {
+                console.log('----',res);
                 throw new Error('Failed!');
             }
             return res.json();
@@ -63,7 +87,7 @@ class Authpage extends Component {
             </div>
             <div className="form-actions">
                 <button type="submit">Submit</button>
-                <button type="button">Switch to Signup</button>
+                <button type="button" onClick={this.switchModeHandler}>Switch to {this.state.isLogin ? 'Signup' : 'Signin'}</button>
             </div>
         </form>
         )
